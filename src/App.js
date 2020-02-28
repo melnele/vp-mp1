@@ -38,8 +38,31 @@ function getOperation(element) {
 
 function getAction(x, id) {
   if (x.blocks[id].inputs.SUBSTACK) {
-    let act = new Action(x.blocks[id].opcode);
-    act.next = getAction(x, x.blocks[id].inputs.SUBSTACK[1]);
+    let act;
+    if (x.blocks[id].inputs.TIMES)
+      act = new Action(x.blocks[id].opcode, x.blocks[id].inputs.TIMES[1][1]);
+    else
+      act = new Action(x.blocks[id].opcode);
+    {
+      let actions1 = [];
+      let elemid1 = x.blocks[id].inputs.SUBSTACK[1];
+      let elem1 = x.blocks[elemid1];
+
+      while (true) {
+        let ac = getAction(x, elemid1);
+        if (elem1.inputs.SUBSTACK) {
+          ac.next = [getAction(x, elem1.inputs.SUBSTACK[1])];
+        }
+
+        actions1.push(ac);
+        if (!elem1.next)
+          break;
+        elemid1 = elem1.next;
+        elem1 = x.blocks[elemid1];
+      }
+      act.next = actions1;
+
+    }
     if (x.blocks[id].inputs.CONDITION) {
       let cond = x.blocks[x.blocks[id].inputs.CONDITION[1]];
       let op1, op2;
@@ -53,21 +76,30 @@ function getAction(x, id) {
       if (Array.isArray(cond.inputs.OPERAND2[1]))
         op2 = cond.inputs.OPERAND2[1][1];
       else
-        op2 =
-          x.blocks[cond.inputs.OPERAND2[1]].opcode === "motion_xposition"
-            ? "x"
-            : "y";
-      act.cond = {
-        operation: getOperation(x.blocks[id].opcode),
-        left: op1,
-        right: op2
-      };
+        op2 = x.blocks[cond.inputs.OPERAND2[1]].opcode === "motion_xposition" ? "x" : "y";
+      act.cond = { operation: getOperation(cond), left: op1, right: op2 }
     }
-    if (x.blocks[id].inputs.SUBSTACK2)
-      act.else = getAction(x, x.blocks[id].inputs.SUBSTACK2[1]);
+    if (x.blocks[id].inputs.SUBSTACK2) {
+      var actions = [];
+      let elemid = x.blocks[id].inputs.SUBSTACK2[1];
+      let elem = x.blocks[elemid];
+
+      while (true) {
+        let ac = getAction(x, elemid);
+        if (elem.inputs.SUBSTACK) {
+          ac.next = [getAction(x, elem.inputs.SUBSTACK[1])];
+        }
+        actions.push(ac);
+        if (!elem.next)
+          break;
+        elemid = elem.next;
+        elem = x.blocks[elemid];
+      }
+      act.else = actions;
+
+    }
     return act;
-  } else if (x.blocks[id].inputs.TIMES)
-    return new Action(x.blocks[id].opcode, x.blocks[id].inputs.TIMES[1][1]);
+  }
   else if (x.blocks[id].inputs.STEPS)
     return new Action(x.blocks[id].opcode, x.blocks[id].inputs.STEPS[1][1]);
   else if (x.blocks[id].inputs.DEGREES) {
@@ -90,19 +122,20 @@ class App extends React.Component {
     for (const x of project.targets) {
       if (!x.isStage) {
         // console.log(x.name);
-        var actions = [];
+        let actions = [];
         for (const id in x.blocks) {
           if (x.blocks[id].parent === null) {
-            var elem = x.blocks[id];
-            var elemid = id;
-
+            let elem = x.blocks[id];
+            let elemid = id;
             while (true) {
-              let act = getAction(x, elemid);
+
+              let action = getAction(x, elemid);
               if (elem.inputs.SUBSTACK) {
-                act.next = getAction(x, elem.inputs.SUBSTACK[1]);
+                action.next = [getAction(x, elem.inputs.SUBSTACK[1])];
               }
-              actions.push(act);
-              if (!elem.next) break;
+              actions.push(action);
+              if (!elem.next)
+                break;
               elemid = elem.next;
               elem = x.blocks[elemid];
             }
@@ -132,7 +165,7 @@ class App extends React.Component {
     //     }
     //   }
     // }
-    answer = sprites[1].actions;
+    answer = sprites[0].actions;
     const steps = [];
     // looping over the blocks
     answer.forEach(el => {
