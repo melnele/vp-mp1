@@ -29,7 +29,7 @@ class Sprite extends Component {
         const g = element.payload + 10; // remove 10 -- testing
         for (let i = 0; i < g; i++) {
           if (element.next) {
-            [element.next].map(act => {
+            element.next.map(act => {
               this.action(act);
             });
           }
@@ -106,7 +106,7 @@ class Sprite extends Component {
         }
 
         if (element.next) {
-          [element.next].map(act => {
+          element.next.map(act => {
             this.action(act);
           });
         }
