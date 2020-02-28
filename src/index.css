@@ -38,16 +38,11 @@ code {
 .number {
   position: absolute;
   transform: translateX(-50%); 
-  left: 50%;
+  left: 45%;
   top: 40px;
   color: #fff;
 }
 
 .number:nth-child(2) {
-  top: 70px;
-}
-
-
-.number:nth-child(3) {
-  top: 100px;
+  left: 55%;
 }

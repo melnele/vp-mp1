@@ -13,12 +13,12 @@ class Sprite extends Component {
       if (element.type === "motion_turnright" || element.type === "motion_turnleft") {
         setTimeout(() => {
           this.setState({ rotation: this.state.rotation + parseInt(element.payload) });
-        }, 1);
+        }, 1000);
       }
       if (element.type === "motion_movesteps") {
         setTimeout(() => {
           this.setState({ x: this.state.x + parseInt(element.payload) });
-        }, 1);
+        }, 1000);
       }
       if (element.type === "control_repeat") {
         const g = element.payload; // remove 10 -- testing (removed)
@@ -126,9 +126,11 @@ class Sprite extends Component {
     }
     return (
       <React.Fragment>
-        <p className="number">{"X: " + this.state.x}</p>
-        <p className="number">{"Y: " + this.state.y}</p>
-        <p className="number">{"R: " + this.state.rotation}</p>
+        <div className="number">
+          <p>{"X: " + parseInt(this.state.x)}</p>
+          <p>{"Y: " + parseInt(this.state.y)}</p>
+          <p>{"R: " + parseInt(this.state.rotation)}</p>
+        </div>
         <img
           src={scratch}
           alt="sprite"
