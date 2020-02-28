@@ -13,15 +13,15 @@ class Sprite extends Component {
       if (element.type === "motion_turnright" || element.type === "motion_turnleft") {
         setTimeout(() => {
           this.setState({ rotation: this.state.rotation + parseInt(element.payload) });
-        }, 1000);
+        }, 1);
       }
       if (element.type === "motion_movesteps") {
         setTimeout(() => {
-          this.setState({ x: this.state.x + parseInt(element.payload) * 5 });
-        }, 1000);
+          this.setState({ x: this.state.x + parseInt(element.payload) });
+        }, 1);
       }
       if (element.type === "control_repeat") {
-        const g = element.payload; // remove 10 -- testing
+        const g = element.payload; // remove 10 -- testing (removed)
         for (let i = 0; i < g; i++) {
           if (element.next) {
             element.next.map(act => {

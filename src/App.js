@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import project from "./project";
+import project from "./project5";
 import Sprite from "./Sprite";
 import flag from "./flag.svg";
 
@@ -299,7 +299,7 @@ class App extends React.Component {
               ? (this.setState({ isFlagClicked: true }),
                   setTimeout(() => {
                     this.setState({ isFlagClicked: false })
-                  }, 1000)
+                  }, 1)
                 )
               : this.setState({ isFlagClicked: false })
           }
