@@ -8,25 +8,20 @@ class Sprite extends Component {
   }
 
   action = element => {
-    // console.log(element);
+    console.log(element);
     if (element) {
-      if (element.type === "motion_turnright") {
+      if (element.type === "motion_turnright" || element.type === "motion_turnleft") {
         setTimeout(() => {
-          this.setState({ rotation: element.payload });
-        }, 1000);
-      }
-      if (element.type === "motion_turnleft") {
-        setTimeout(() => {
-          this.setState({ rotation: -element.payload });
+          this.setState({ rotation: this.state.rotation + parseInt(element.payload) });
         }, 1000);
       }
       if (element.type === "motion_movesteps") {
         setTimeout(() => {
-          this.setState({ x: this.state.x + element.payload * 5 });
+          this.setState({ x: this.state.x + parseInt(element.payload) * 5 });
         }, 1000);
       }
       if (element.type === "control_repeat") {
-        const g = element.payload + 10; // remove 10 -- testing
+        const g = element.payload; // remove 10 -- testing
         for (let i = 0; i < g; i++) {
           if (element.next) {
             element.next.map(act => {
@@ -118,6 +113,7 @@ class Sprite extends Component {
     // console.log(this.props);
     // console.log("inputs");
     // console.log(this.props.input.actions);
+    // console.log("_________________________");
     this.setState({ x: this.props.input.x, y: this.props.input.y });
   }
 
@@ -129,19 +125,24 @@ class Sprite extends Component {
       });
     }
     return (
-      <img
-        src={scratch}
-        alt="sprite"
-        style={{
-          height: 100,
-          width: 100,
-          position: "absolute",
-          top: this.state.x,
-          left: this.state.y,
-          transform: `translateX(${this.state.x}px) rotate(${this.state.rotation}deg)`,
-          transition: "all 3s"
-        }}
-      ></img>
+      <React.Fragment>
+        <p className="number">{"X: " + this.state.x}</p>
+        <p className="number">{"Y: " + this.state.y}</p>
+        <p className="number">{"R: " + this.state.rotation}</p>
+        <img
+          src={scratch}
+          alt="sprite"
+          style={{
+            height: 100,
+            width: 100,
+            position: "absolute",
+            top: this.state.x,
+            left: this.state.y,
+            transform: `translateX(${this.state.x}px) rotate(${this.state.rotation}deg)`,
+            transition: "all 3s"
+          }}
+        ></img>
+      </React.Fragment>
     );
   }
 }

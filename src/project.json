@@ -52,7 +52,7 @@
                 "3W`oe7onD|P(j-|yCBRz": {
                     "opcode": "motion_movesteps",
                     "next": null,
-                    "parent": "qjT1$mrP){[742t.{rbo",
+                    "parent": "dPKd/nBC[ctR`c`o0#!e",
                     "inputs": {
                         "STEPS": [
                             1,
@@ -68,7 +68,7 @@
                 },
                 "$^^6eElbtS#P%k?:}6))": {
                     "opcode": "motion_turnright",
-                    "next": "jU/_bWp}l8zBjXUh:0;Y",
+                    "next": null,
                     "parent": "qp4`zeW*8W4^2TLpan(y",
                     "inputs": {
                         "DEGREES": [
@@ -85,7 +85,7 @@
                 },
                 "xHsC!e7o%?^Ym6il/|3z": {
                     "opcode": "motion_turnleft",
-                    "next": "qjT1$mrP){[742t.{rbo",
+                    "next": null,
                     "parent": "$6}8o#o4!{u)Jy(Tq{O0",
                     "inputs": {
                         "DEGREES": [
@@ -113,7 +113,7 @@
                 },
                 "$6}8o#o4!{u)Jy(Tq{O0": {
                     "opcode": "control_if",
-                    "next": "F{qU*-p.g,@FS|yf@,jO",
+                    "next": null,
                     "parent": "qp4`zeW*8W4^2TLpan(y",
                     "inputs": {
                         "CONDITION": [
@@ -131,7 +131,7 @@
                 },
                 "qp4`zeW*8W4^2TLpan(y": {
                     "opcode": "control_if_else",
-                    "next": ",zc-FSLy$v7u^IH9/m`B",
+                    "next": null,
                     "parent": "dPKd/nBC[ctR`c`o0#!e",
                     "inputs": {
                         "CONDITION": [
@@ -238,7 +238,7 @@
                 },
                 "dPKd/nBC[ctR`c`o0#!e": {
                     "opcode": "control_repeat",
-                    "next": "A#Fw91oP?T|(x/G#uvtv",
+                    "next": "3W`oe7onD|P(j-|yCBRz",
                     "parent": "0:$!yb?_p{`qgr^}}f`8",
                     "inputs": {
                         "TIMES": [
@@ -262,159 +262,6 @@
                     "next": null,
                     "parent": "cT]N`-cRhFgfa/N]#a.J",
                     "inputs": {},
-                    "fields": {},
-                    "shadow": false,
-                    "topLevel": false
-                },
-                "qjT1$mrP){[742t.{rbo": {
-                    "opcode": "motion_movesteps",
-                    "next": "3W`oe7onD|P(j-|yCBRz",
-                    "parent": "xHsC!e7o%?^Ym6il/|3z",
-                    "inputs": {
-                        "STEPS": [
-                            1,
-                            [
-                                4,
-                                "2"
-                            ]
-                        ]
-                    },
-                    "fields": {},
-                    "shadow": false,
-                    "topLevel": false
-                },
-                "jU/_bWp}l8zBjXUh:0;Y": {
-                    "opcode": "motion_movesteps",
-                    "next": "1y{lqL(*8a~gR+E=wU*@",
-                    "parent": "$^^6eElbtS#P%k?:}6))",
-                    "inputs": {
-                        "STEPS": [
-                            1,
-                            [
-                                4,
-                                "2"
-                            ]
-                        ]
-                    },
-                    "fields": {},
-                    "shadow": false,
-                    "topLevel": false
-                },
-                "1y{lqL(*8a~gR+E=wU*@": {
-                    "opcode": "motion_movesteps",
-                    "next": null,
-                    "parent": "jU/_bWp}l8zBjXUh:0;Y",
-                    "inputs": {
-                        "STEPS": [
-                            1,
-                            [
-                                4,
-                                "2"
-                            ]
-                        ]
-                    },
-                    "fields": {},
-                    "shadow": false,
-                    "topLevel": false
-                },
-                "A#Fw91oP?T|(x/G#uvtv": {
-                    "opcode": "motion_movesteps",
-                    "next": "pd={D@71E%Tgf_2Df=pw",
-                    "parent": "dPKd/nBC[ctR`c`o0#!e",
-                    "inputs": {
-                        "STEPS": [
-                            1,
-                            [
-                                4,
-                                "10"
-                            ]
-                        ]
-                    },
-                    "fields": {},
-                    "shadow": false,
-                    "topLevel": false
-                },
-                "pd={D@71E%Tgf_2Df=pw": {
-                    "opcode": "motion_movesteps",
-                    "next": null,
-                    "parent": "A#Fw91oP?T|(x/G#uvtv",
-                    "inputs": {
-                        "STEPS": [
-                            1,
-                            [
-                                4,
-                                "10"
-                            ]
-                        ]
-                    },
-                    "fields": {},
-                    "shadow": false,
-                    "topLevel": false
-                },
-                ",zc-FSLy$v7u^IH9/m`B": {
-                    "opcode": "motion_movesteps",
-                    "next": "*^MZZ-lVl7aYm,Mb7=tO",
-                    "parent": "qp4`zeW*8W4^2TLpan(y",
-                    "inputs": {
-                        "STEPS": [
-                            1,
-                            [
-                                4,
-                                "10"
-                            ]
-                        ]
-                    },
-                    "fields": {},
-                    "shadow": false,
-                    "topLevel": false
-                },
-                "*^MZZ-lVl7aYm,Mb7=tO": {
-                    "opcode": "motion_movesteps",
-                    "next": null,
-                    "parent": ",zc-FSLy$v7u^IH9/m`B",
-                    "inputs": {
-                        "STEPS": [
-                            1,
-                            [
-                                4,
-                                "10"
-                            ]
-                        ]
-                    },
-                    "fields": {},
-                    "shadow": false,
-                    "topLevel": false
-                },
-                "F{qU*-p.g,@FS|yf@,jO": {
-                    "opcode": "motion_movesteps",
-                    "next": "DIbH,Y/T[r3Va@=0MvbD",
-                    "parent": "$6}8o#o4!{u)Jy(Tq{O0",
-                    "inputs": {
-                        "STEPS": [
-                            1,
-                            [
-                                4,
-                                "10"
-                            ]
-                        ]
-                    },
-                    "fields": {},
-                    "shadow": false,
-                    "topLevel": false
-                },
-                "DIbH,Y/T[r3Va@=0MvbD": {
-                    "opcode": "motion_movesteps",
-                    "next": null,
-                    "parent": "F{qU*-p.g,@FS|yf@,jO",
-                    "inputs": {
-                        "STEPS": [
-                            1,
-                            [
-                                4,
-                                "10"
-                            ]
-                        ]
-                    },
                     "fields": {},
                     "shadow": false,
                     "topLevel": false
@@ -456,10 +303,10 @@
             "volume": 100,
             "layerOrder": 2,
             "visible": true,
-            "x": 293,
-            "y": -231,
+            "x": 157.63831044133124,
+            "y": 91.25203745461828,
             "size": 100,
-            "direction": 150,
+            "direction": 0,
             "draggable": false,
             "rotationStyle": "all around"
         },
