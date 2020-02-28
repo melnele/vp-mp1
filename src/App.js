@@ -112,18 +112,18 @@ class App extends React.Component {
           if (x.blocks[id].parent === null) {
             let elem = x.blocks[id];
             let elemid = id;
-            let act = getAction(x, elemid);
-            act.next = []
-            while (elem.next) {
+            while (true) {
+
+              let action = getAction(x, elemid);
+              if (elem.inputs.SUBSTACK) {
+                action.next = [getAction(x, elem.inputs.SUBSTACK[1])];
+              }
+              actions.push(action);
+              if (!elem.next)
+                break;
               elemid = elem.next;
               elem = x.blocks[elemid];
-              let action = getAction(x, elemid);
-              // if (elem.inputs.SUBSTACK) {
-              //   action.next.push(getAction(x, elem.inputs.SUBSTACK[1]))
-              // }
-              act.next.push(action);
             }
-            actions.push(act);
           }
         }
         var sp = new SpriteClass(x.name, x.x, x.y, actions);
