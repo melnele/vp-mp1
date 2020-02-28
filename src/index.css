@@ -11,3 +11,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.flag {
+  position: absolute;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 5px 10px;
+  z-index: 5;
+  border: none;
+}
+
+.flag img {
+  width: 25px;
+  margin: 10px 0;
+}
+
+.flag:hover {
+  opacity: 0.5;
+}
+
+.flag{
+  outline: none;
+}
