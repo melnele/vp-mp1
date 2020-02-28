@@ -8,7 +8,7 @@ class Sprite extends Component {
   }
 
   action = element => {
-    console.log(element);
+    // console.log(element);
     if (element) {
       if (element.type === "motion_turnright" || element.type === "motion_turnleft") {
         setTimeout(() => {
@@ -38,7 +38,7 @@ class Sprite extends Component {
         switch (element.cond.operation) {
           case ">":
             if (element.cond.left === "x") {
-              if (this.state.x > +element.cond.right) {
+              if (this.state.x > parseInt(element.cond.right)) {
                 this.action(element.if);
               } else {
                 if (element.else) {
@@ -46,7 +46,7 @@ class Sprite extends Component {
                 }
               }
             } else {
-              if (this.state.y > +element.cond.right) {
+              if (this.state.y > parseInt(element.cond.right)) {
                 this.action(element.if);
               } else {
                 if (element.else) {
@@ -58,7 +58,7 @@ class Sprite extends Component {
 
           case "<":
             if (element.cond.left === "x") {
-              if (this.state.x < +element.cond.right) {
+              if (this.state.x < parseInt(element.cond.right)) {
                 this.action(element.if);
               } else {
                 if (element.else) {
@@ -66,7 +66,7 @@ class Sprite extends Component {
                 }
               }
             } else {
-              if (this.state.y < +element.cond.right) {
+              if (this.state.y < parseInt(element.cond.right)) {
                 this.action(element.if);
               } else {
                 if (element.else) {
@@ -78,7 +78,7 @@ class Sprite extends Component {
 
           case "=":
             if (element.cond.left === "x") {
-              if (this.state.x === +element.cond.right) {
+              if (this.state.x === parseInt(element.cond.right)) {
                 this.action(element.if);
               } else {
                 if (element.else) {
@@ -86,7 +86,7 @@ class Sprite extends Component {
                 }
               }
             } else {
-              if (this.state.y === +element.cond.right) {
+              if (this.state.y === parseInt(element.cond.right)) {
                 this.action(element.if);
               } else {
                 if (element.else) {
