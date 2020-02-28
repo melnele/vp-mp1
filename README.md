@@ -1,3 +1,12 @@
+## Project Description
+
+This mini project is implemented to parse sb3 scratch file to actions done on number of sprites.
+
+To start clone the repo then "npm install" to install dependencies then "npm start" to start up the project. If you want to try your json file, you can by replacing the import of the your json file in App.js 
+
+
+## How to run
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
