@@ -126,11 +126,11 @@ class Sprite extends Component {
     }
     return (
       <React.Fragment>
-        <div className="number">
+        {/* <div className="number">
           <p>{"X: " + parseInt(this.state.x)}</p>
           <p>{"Y: " + parseInt(this.state.y)}</p>
           <p>{"R: " + parseInt(this.state.rotation)}</p>
-        </div>
+        </div> */}
         <img
           src={scratch}
           alt="sprite"
